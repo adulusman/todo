@@ -1,0 +1,59 @@
+{% extends 'base.html' %} 
+{% block content %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-mmd-12">
+            <div class="banner" style="background-color:
+            #2d625f;
+            width: 100%;
+            height: 100px;
+            margin-bottom: 50px;">
+                <div class="banner-text">
+                    <h1  style="text-align: center; font-family: Georgia, 'Times New Roman', Times, serif; color: aliceblue; position:absolute; left: 675px; top:20px;">ToDo App</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <form method="post" class="shadow-lg p-3 mb-5 rounded">
+            {% csrf_token %}
+            <h2>Add Tasks</h2><br>
+            <div class="form-group">
+                <input type="text" name="task" placeholder="Enter your task" class="form-control" >
+            </div><br>
+            <div class="form-group">
+                <input type="text" name="priority" placeholder="Enter the priority" class="form-control" > 
+            </div><br>
+            <div class="form-group">
+                <input type="date" name="date" class="form-control"> 
+            </div><br>
+                <input type="submit" class="btn btn-success">
+            </form>
+        </div>
+        <div class="col-md-6">
+            <h3>Tasks To be Compleated</h3>
+            {% for i in task1 %}
+            <div class="shadow-lg card" style="background-color:  #8cd37a">
+            <div class="card-body">
+                <h5 class="card-title">{{i.name}}</h5>
+                <p><b>{{i.priority}}</b></p>
+                <p><b>{{i.date}}</b></p>
+                <a class="btn btn-success" href="{% url 'delete' i.id %}">Done</a>
+                <a class="btn btn-success" href="{% url 'update' i.id %}">Update</a>
+            </div>
+            </div>
+            <br>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+
+
+
+
+

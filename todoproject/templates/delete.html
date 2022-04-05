@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="card" style="width: 18rem;">
+            <form method="post">
+                {% csrf_token %}
+            <div class="card-body">
+              <h5 class="card-title">Task Compleate</h5>
+              <p class="card-text">Are you sure this task is compleated?</p>
+              <input type="submit" class="btn btn-danger" value="yes">
+              <a class="btn btn-primary" href="/"> no </a>
+            </div>
+          </div>
+        </form>
+    </div>
+</div>
+{% endblock %}
